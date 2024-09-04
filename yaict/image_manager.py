@@ -84,14 +84,3 @@ class ImageManager:
                         break  # Assuming only one matching image per folder
         logging.info("Retrieved matching image files: %s", image_files)
         return image_files
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    manager = ImageManager(base_dir='./yaict_data')
-    manager.setup_folders()
-    added_image_folder = manager.add_image('./test_imgs/deer.jpg')
-    logging.info(f"Image added to {added_image_folder}")
-    images = manager.add_images_from_folder('./test_imgs/img_folder')
-    logging.info("Added images: %s", images)
-    all_images = manager.get_all_images()
-    logging.info("All images: %s", all_images)
