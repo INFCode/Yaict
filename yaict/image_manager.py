@@ -34,10 +34,10 @@ class ImageManager:
         Scan the base directory and generate a dict mapping image id to its full path.
         """
         for folder in self.base_dir.iterdir():
-            if folder.is_dir():
+            if folder.is_dir() and folder.name != 'thumbnails':
                 for file in folder.iterdir():
                     if file.is_file():
-                        image_id = str(uuid.uuid4())
+                        image_id = file.stem
                         self.image_map[image_id] = file
         logging.info("Loaded existing images: %s", self.image_map)
 
